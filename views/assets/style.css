@@ -1,0 +1,36 @@
+/*style.css------------------*/
+/*global-----------------------------------------------*/
+
+/* Default light theme */
+*.light-theme {
+    background-color: wheat;
+    color: charcoal;
+}
+/* Dark theme */
+*.dark-theme {
+    background-color: rgb(83, 83, 83);
+    color: whitesmoke;
+}
+
+/*index*/
+
+/*dashboard*/
+
+/*students*/
+
+/*addstudent*/
+
+/*editstudent*/
+
+/*comment out section vvvvv ----------
+
+body {background-color:red;}
+p {color:blue;}
+
+
+
+
+
+
+
+-------------------------------------*/

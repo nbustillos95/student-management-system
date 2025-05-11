@@ -1,0 +1,52 @@
+/*layout.css--------------------*/
+/*outlines--------------------*/
+
+
+
+
+/*global------------------------------------------------*/
+body {
+    display:flex;
+    flex-direction:column;
+    height:98vh;
+    width:auto;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.navbuttons {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    margin-left: auto;
+}
+/*index*/
+.loginform {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+/*dashboard*/
+
+/*students*/
+.addstudent {
+    margin-top: 50px;
+}
+/*addstudent*/
+.addstudentform {
+    margin-top: 50px;
+}
+/*editstudent*/
+
+
+
+
+
+/*comment out section vvvvv ----------
+* {outline: 1px solid gray;}
+
+
+
+-------------------------------------*/
