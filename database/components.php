@@ -75,7 +75,7 @@ function displayEditStudentForm($student) {
             <label>Grade:</label>
             <input type="text" name="studentGrade" value="' . htmlspecialchars($student['studentGrade']) . '" required>
             <br>
-            <input type="submit" value="Save Changes">
+            <input type="submit" value="Update Student">
         </form>
     </div>';
 }

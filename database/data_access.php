@@ -48,9 +48,8 @@ function getStudentByID($conn, $studentID) {
 //
 //// Update a student's details
 function updateStudent($conn, $studentID, $studentName, $studentEmail, $studentDOB, $studentGrade) {
-    $query = "UPDATE students SET studentName = ?, studentEmail = ?, studentDOB = ?, studentGrade = ? WHERE studentID = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssii", $studentName, $studentEmail, $studentDOB, $studentGrade, $studentID);
+    $stmt = $conn->prepare("UPDATE students SET studentName=?, studentEmail=?, studentDOB=?, studentGrade=? WHERE studentID=?");
+    $stmt->bind_param("ssssi", $studentName, $studentEmail, $studentDOB, $studentGrade, $studentID);
     return $stmt->execute();
 }
 //

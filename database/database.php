@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $servername = "localhost";
-$username = "student_admin";
+$username = "sm_admin";
 $password = "admin123";
 $database = "student_management";
 

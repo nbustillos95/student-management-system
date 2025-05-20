@@ -1,27 +1,31 @@
 <?php
+session_start();
 require_once '../database/database.php';
+
+// Redirect to login if not authenticated
+if (!isset($_SESSION['userID'])) {
+    header('Location: index.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = intval($_POST['id']);
 
-    // Use the correct column name (studentID) in the query
-    $query = "DELETE FROM students WHERE studentID = ?";
-    $stmt = $conn->prepare($query);
+    // Use prepared statement to delete student by ID
+    $stmt = $conn->prepare("DELETE FROM students WHERE studentID = ?");
     $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        // No echo or output here
-    } else {
-        // No echo or output here
-    }
-
+    $stmt->execute();
     $stmt->close();
-    $conn->close();
 
     // Redirect back to the students page
-    header("Location: ./students.php");
-    exit();
+    header("Location: students.php");
+    exit;
 } else {
-    echo "Invalid request.";
+    // Invalid request, redirect to students page
+    header("Location: students.php");
+    exit;
 }
-?>
+
+if (isset($conn) && $conn instanceof mysqli) {
+    $conn->close();
+}
