@@ -11,6 +11,16 @@ if (!isset($_SESSION['userID'])) {
     exit;
 }
 
+// Handle GET request (show form)
+$student = null;
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['studentID'])) {
+    $studentID = $_GET['studentID'];
+    $student = getStudentByID($conn, $studentID);
+    if (!$student) {
+        $message = "Student not found.";
+    }
+}
+
 // Handle form submission (update student)
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,19 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Handle GET request (show form)
-$student = null;
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['studentID'])) {
-    $studentID = $_GET['studentID'];
-    $student = getStudentByID($conn, $studentID);
-    if (!$student) {
-        $message = "Student not found.";
-    }
-}
-
 // Set theme based on cookie, default to light
 $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light-theme';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +52,9 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
     <link rel="stylesheet" href="assets/style.css">
     <title>Edit Student</title>
 </head>
+<!--html body-->
 <body class="<?php echo $theme; ?>">
+
     <div class="header">
         <h1>Edit Student</h1>
         <div class="navbuttons">
@@ -67,7 +70,10 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <button id="themeToggle">Switch Theme</button>
         </div>
     </div>
-    <div class="editstudentform">
+
+    <h2>
+
+    <div class="editstudent">
         <?php if ($message): ?>
             <div class="error"><?php echo htmlspecialchars($message); ?></div>
         <?php endif; ?>
@@ -75,9 +81,11 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <?php displayEditStudentForm($student); ?>
         <?php endif; ?>
     </div>
+
     <script src="assets/myscript.js"></script>
 </body>
 </html>
+
 <?php
 if (isset($conn) && $conn instanceof mysqli) {
     $conn->close();

@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Set theme based on cookie, default to light
 $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light-theme';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +40,9 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
     <link rel="stylesheet" href="assets/style.css">
     <title>Add Student</title>
 </head>
+<!--html body-->
 <body class="<?php echo $theme; ?>">
+
     <div class="header">
         <h1>Add New Student</h1>
         <div class="navbuttons">
@@ -55,11 +58,12 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <button id="themeToggle">Switch Theme</button>
         </div>
     </div>
-    <div class="addstudentform">
+
+    <div class="addstudent">
         <?php if ($message): ?>
             <div class="message"><?php echo htmlspecialchars($message); ?></div>
         <?php endif; ?>
-        <form action="addstudent.php" method="post" autocomplete="off">
+        <form class="addstudentform" action="addstudent.php" method="post" autocomplete="off">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br>
             <label for="email">Email:</label><br>
@@ -71,9 +75,11 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <input type="submit" value="Add Student">
         </form>
     </div>
+    
     <script src="assets/myscript.js"></script>
 </body>
 </html>
+
 <?php
 if (isset($conn) && $conn instanceof mysqli) {
     $conn->close();

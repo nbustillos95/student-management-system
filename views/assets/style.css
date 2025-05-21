@@ -1,12 +1,9 @@
 /*style.css------------------*/
-/*global-----------------------------------------------*/
-
-/* Default light theme */
+/*global---------------------------*/
 *.light-theme {
     background-color: wheat;
     color: charcoal;
 }
-/* Dark theme */
 *.dark-theme {
     background-color: rgb(83, 83, 83);
     color: whitesmoke;
@@ -19,14 +16,22 @@
 /*students*/
 
 /*addstudent*/
+.addstudentform {
+    border:2px solid black;
+    margin-top:20px;
+    padding:20px;
+}
 
 /*editstudent*/
-
-/*comment out section vvvvv ----------
+.editstudentform {
+    border:2px solid black;
+    margin-top:20px;
+    padding:20px;
+}
+/*comment out section vvvvv ------
 
 body {background-color:red;}
 p {color:blue;}
-
 
 
 

@@ -21,7 +21,7 @@ function displayStudents($conn) {
             <th>Actions</th>
             </tr>";
         while ($row = $result->fetch_assoc()) {
-            // Calculate age from dob
+
             $dob = $row['studentDOB'];
             $age = date_diff(date_create($dob), date_create('today'))->y;
 
@@ -31,7 +31,7 @@ function displayStudents($conn) {
             echo "<td>" . $row['studentEmail'] . "</td>";
             echo "<td>" . $dob . "</td>";
             echo "<td>" . $row['studentGrade'] . "</td>";
-            echo "<td>" . $age . "</td>"; // Display the calculated age
+            echo "<td>" . $age . "</td>";
             echo "<td>
                     <form action='editstudent.php' method='get' style='display:inline;'>
                         <input type='hidden' name='studentID' value='" . $row['studentID'] . "'>
@@ -60,8 +60,8 @@ function addStudent($conn, $name, $email, $dob, $grade) {
 //
 //// function to edit student (calls updateStudent)
 function displayEditStudentForm($student) {
-    echo '<div class="editstudentform">
-        <form method="post">
+    echo '<div class="editstudent">
+        <form class="editstudentform" method="post">
             <input type="hidden" name="studentID" value="' . htmlspecialchars($student['studentID']) . '">
             <label>Name:</label>
             <input type="text" name="studentName" value="' . htmlspecialchars($student['studentName']) . '" required>

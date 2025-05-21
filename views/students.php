@@ -14,6 +14,7 @@ if (!isset($_SESSION['userID'])) {
 // Set theme based on cookie, default to light
 $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light-theme';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,9 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
     <link rel="stylesheet" href="assets/style.css">
     <title>View Students Table</title>
 </head>
+<!--html body-->
 <body class="<?php echo $theme; ?>">
+
     <div class="header">
         <h1>Currently Enrolled Students</h1>
         <div class="navbuttons">
@@ -37,18 +40,23 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <button id="themeToggle">Switch Theme</button>
         </div>
     </div>
-    <div class="dashboard">
-        <h2>Student Data</h2>
+
+    <h2>Student Data</h2>
+
+    <div class="studenttable">
         <?php displayStudents($conn); ?>
     </div>
-    <div class="addstudent">
+
+    <div class="addstudentbutton">
         <form action="addstudent.php" method="post">
             <input type="submit" value="Add Student">
         </form>
     </div>
+
     <script src="assets/myscript.js"></script>
 </body>
 </html>
+
 <?php
 if (isset($conn) && $conn instanceof mysqli) {
     $conn->close();

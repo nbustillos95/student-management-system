@@ -14,6 +14,7 @@ if (isset($_SESSION['loginError'])) {
 // Set theme based on cookie, default to light
 $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light-theme';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +25,16 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
     <link rel="stylesheet" href="assets/style.css">
     <title>Index</title>
 </head>
+<!--html body-->
 <body class="<?php echo $theme; ?>">
+
     <div class="header">
         <h1>Welcome to the Student Management System</h1>
         <div class="navbuttons">
             <button id="themeToggle">Switch Theme</button>
         </div>
     </div>
+
     <div class="loginform">
         <h2>Login</h2>
         <?php if (!empty($loginError)): ?>
@@ -44,9 +48,11 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
             <input type="submit" value="Login">
         </form>
     </div>
+    
     <script src="assets/myscript.js"></script>
 </body>
 </html>
+
 <?php
 // Close database connection if open
 if (isset($conn) && $conn instanceof mysqli) {
