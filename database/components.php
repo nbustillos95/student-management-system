@@ -17,7 +17,7 @@ function displayStudents($conn) {
             <th>Email</th>
             <th>Date of Birth</th>
             <th>Grade</th>
-            <th>Age</th> <!-- New Age Column -->
+            <th>Age</th>
             <th>Actions</th>
             </tr>";
         while ($row = $result->fetch_assoc()) {
@@ -58,26 +58,5 @@ function addStudent($conn, $name, $email, $dob, $grade) {
     return insertStudent($conn, $name, $email, $dob, $grade);
 }
 //
-//// function to edit student (calls updateStudent)
-function displayEditStudentForm($student) {
-    echo '<div class="editstudent">
-        <form class="editstudentform" method="post">
-            <input type="hidden" name="studentID" value="' . htmlspecialchars($student['studentID']) . '">
-            <label>Name:</label>
-            <input type="text" name="studentName" value="' . htmlspecialchars($student['studentName']) . '" required>
-            <br>
-            <label>Email:</label>
-            <input type="email" name="studentEmail" value="' . htmlspecialchars($student['studentEmail']) . '" required>
-            <br>
-            <label>Date of Birth:</label>
-            <input type="date" name="studentDOB" value="' . htmlspecialchars($student['studentDOB']) . '" required>
-            <br>
-            <label>Grade:</label>
-            <input type="text" name="studentGrade" value="' . htmlspecialchars($student['studentGrade']) . '" required>
-            <br>
-            <input type="submit" value="Update Student">
-        </form>
-    </div>';
-}
-//
+
 ?>

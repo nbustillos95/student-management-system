@@ -40,10 +40,10 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
 
     <div class="dashboard">
         <ul>
-            <li><a href="students.php">View/Edit Students</a></li>
+            <li><a href="students.php" class="dashlink">View/Edit Students</a></li>
         </ul>
     </div>
-    
+
     <script src="assets/myscript.js"></script>
 </body>
 </html>

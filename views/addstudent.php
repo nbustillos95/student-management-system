@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $grade = trim($_POST['grade'] ?? '');
 
     if (!$name || !$email || !$dob || !$grade || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message = "All fields must be filled out correctly.";
+        //$message = "All fields must be filled out correctly.";
     } else {
         $message = addStudent($conn, $name, $email, $dob, $grade);
     }
@@ -59,11 +59,13 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
         </div>
     </div>
 
+    <h2>Add Student Form</h2>
+
     <div class="addstudent">
         <?php if ($message): ?>
             <div class="message"><?php echo htmlspecialchars($message); ?></div>
         <?php endif; ?>
-        <form class="addstudentform" action="addstudent.php" method="post" autocomplete="off">
+        <form action="addstudent.php" method="post" autocomplete="off">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br>
             <label for="email">Email:</label><br>

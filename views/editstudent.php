@@ -71,14 +71,29 @@ $theme = isset($_COOKIE['theme']) ? htmlspecialchars($_COOKIE['theme']) : 'light
         </div>
     </div>
 
-    <h2>
+    <h2>Edit Student Form</h2>
 
     <div class="editstudent">
         <?php if ($message): ?>
             <div class="error"><?php echo htmlspecialchars($message); ?></div>
         <?php endif; ?>
         <?php if ($student): ?>
-            <?php displayEditStudentForm($student); ?>
+            <form method="post">
+                <input type="hidden" name="studentID" value="<?php echo htmlspecialchars($student['studentID']); ?>">
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" name="studentName" value="<?php echo htmlspecialchars($student['studentName']); ?>" required>
+                <br>
+                <label for="studentEmail">Email:</label>
+                <input type="email" id="studentEmail" name="studentEmail" value="<?php echo htmlspecialchars($student['studentEmail']); ?>" required>
+                <br>
+                <label for="studentDOB">Date of Birth:</label>
+                <input type="date" id="studentDOB" name="studentDOB" value="<?php echo htmlspecialchars($student['studentDOB']); ?>" required>
+                <br>
+                <label for="studentGrade">Grade:</label>
+                <input type="text" id="studentGrade" name="studentGrade" value="<?php echo htmlspecialchars($student['studentGrade']); ?>" required>
+                <br><br>
+                <input type="submit" value="Update Student">
+            </form>
         <?php endif; ?>
     </div>
 
